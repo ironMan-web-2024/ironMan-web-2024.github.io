@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密碼跳轉網站</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        #container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h1>請輸入密碼</h1>
+    <input type="password" id="password" placeholder="輸入密碼">
+    <br>
+    <button id="submitBtn" onclick="checkPassword()">輸入</button>
+    <p id="message"></p>
+</div>
+
+<script>
+    const passwords = {
+        'password1': 'https://www.youtube.com/watch?v=gFZA-QqoVew',
+        'password2': 'correct.jpg',
+        'password3': 'https://example3.com',
+        'password4': 'https://example4.com',
+        'password5': 'https://example5.com',
+        'password6': 'https://example6.com',
+        'password7': 'https://example7.com',
+        'password8': 'https://example8.com',
+        'password9': 'https://example9.com',
+        'password10': 'https://example10.com',
+        'password11': 'https://example11.com',
+        'password12': 'https://example12.com',
+        'password13': 'https://example13.com',
+        'password14': 'https://example14.com',
+        'password15': 'https://example15.com'
+    };
+
+    function checkPassword() {
+        const input = document.getElementById('password').value;
+        if (passwords[input]) {
+            window.location.href = passwords[input];
+        } else {
+            document.getElementById('message').innerText = '密碼錯誤，請10秒後再試';
+            document.getElementById('submitBtn').disabled = true;
+            setTimeout(() => {
+                document.getElementById('message').innerText = '';
+                document.getElementById('submitBtn').disabled = false;
+            }, 10000);
+        }
+    }
+</script>
+
+</body>
+</html>
