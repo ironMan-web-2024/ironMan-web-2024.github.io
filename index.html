@@ -69,17 +69,21 @@
         'password15': 'https://example15.com'
     };
 
+     let attempts = 0;
+
     function checkPassword() {
         const input = document.getElementById('password').value;
         if (passwords[input]) {
             window.location.href = passwords[input];
         } else {
-            document.getElementById('message').innerText = '密碼錯誤，請10秒後再試';
+            attempts++;
+            let waitTime = attempts * 10;
+            document.getElementById('message').innerText = `密碼錯誤，請 ${waitTime} 秒後再試`;
             document.getElementById('submitBtn').disabled = true;
             setTimeout(() => {
                 document.getElementById('message').innerText = '';
                 document.getElementById('submitBtn').disabled = false;
-            }, 10000);
+            }, waitTime * 1000);
         }
     }
 </script>
