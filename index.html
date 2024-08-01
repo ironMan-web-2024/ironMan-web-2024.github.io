@@ -78,7 +78,7 @@
         } else {
             attempts++;
             let waitTime = attempts * 10;
-            document.getElementById('message').innerText = `密碼錯誤，請 ${waitTime} 秒後再試`;
+            document.getElementById('message').innerText = `密碼錯誤，請 ${waitTime} 秒後再試 \n Wrong password. Please try again in ${waitTime} seconds.`;
             document.getElementById('submitBtn').disabled = true;
             setTimeout(() => {
                 document.getElementById('message').innerText = '';
